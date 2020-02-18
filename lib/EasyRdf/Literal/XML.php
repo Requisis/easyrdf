@@ -54,6 +54,9 @@ class EasyRdf_Literal_XML extends EasyRdf_Literal
      */
     public function __construct($value, $lang = null, $datatype = null)
     {
+        if (is_null($datatype)) {
+            $datatype = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral';
+        }
         parent::__construct($value, null, $datatype);
     }
 

@@ -573,7 +573,9 @@ class EasyRdf_Parser_RdfXml extends EasyRdf_Parser
                 $nsUri = $parts[0];
                 $name = $parts[1];
                 $nsp = isset($this->nsp[$nsUri]) ? $this->nsp[$nsUri] : '';
-                $data .= $nsp ? ' '.$nsp.':'.$name.'="'.$v.'"' : ' '.$name.'="'.$v.'"' ;
+                $data .= $nsp
+                    ? ' '.$nsp.':'.$name.'="'.$v.'"'
+                    : ' '.(strlen($name) <= 0 ? $nsUri : $name) .'="'.$v.'"' ;
             }
         }
         $data .= '>';
